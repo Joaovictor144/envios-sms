@@ -23,5 +23,13 @@ export const Container = styled.div`
             border-color: blue;
             outline-color:blue;
         }
+
+        div>input#enviar::placeholder{
+                color:#0000ff!important;
+                padding:0px 5px;
+                text-transform: uppercase;
+            
+        }
     }
+    
 `

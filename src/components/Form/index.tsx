@@ -1,8 +1,9 @@
 import { Container } from "./style";
-import {useState} from "react"
+import {useState} from "react";
+
 
 export default function Form() {
-   
+    
     const [numero,setNumero] = useState('');
     const [mensagem,setMensagem] = useState('');
     return (
@@ -14,6 +15,7 @@ export default function Form() {
                     id="numero" 
                     onChange={(e)=> setNumero(e.target.value)}
                     value={numero}
+                    required
                     />
                 </div>
                 
@@ -27,6 +29,10 @@ export default function Form() {
                     onChange={(e)=> setMensagem(e.target.value)}
                     value={mensagem}
                     />
+                </div>
+
+                <div>
+                    <input id={"enviar"} type="submit" placeholder="Enviar"/>
                 </div>
                 {console.log(mensagem,numero)}
             </form>
