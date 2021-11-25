@@ -1,11 +1,48 @@
 import { Container } from "./style";
 import {useState} from "react";
+import axios from "axios";
 
 
 export default function Form() {
-    
+
     const [numero,setNumero] = useState('');
     const [mensagem,setMensagem] = useState('');
+    const [resposta,setResposta] = useState('')
+
+    async function postSms (numero:string,mensagem:string){
+        let res = await axios.post("http://10.10.10.84/api/send_sms/",{
+            
+            params:{
+                "text": mensagem,"param":
+                [
+                    {"number":numero}
+                ]
+            },
+            auth:{
+                username:"admin",
+                password:"w9t5Re34D"
+            }
+            
+
+        })
+        
+        return setResposta(res.data)
+
+    }
+
+    function enviarSms(e:any){
+        e.preventDefault()
+        postSms(numero,mensagem)
+        setTimeout(limpar, 1000)
+        
+    }
+
+    function limpar(){
+        setMensagem('')
+        setNumero('')
+    }
+
+   
     return (
         <Container>
             <form>
@@ -32,10 +69,13 @@ export default function Form() {
                 </div>
 
                 <div>
-                    <input id={"enviar"} type="submit" placeholder="Enviar"/>
+                    <input id={"enviar"} type="submit" placeholder="Enviar" onClick={enviarSms}/>
                 </div>
-                {console.log(mensagem,numero)}
+               
             </form>
+            <br/>
+
+            <h2>{resposta}</h2>
         </Container>
     )
 

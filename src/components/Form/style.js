@@ -24,11 +24,19 @@ export const Container = styled.div`
             outline-color:blue;
         }
 
-        div>input#enviar::placeholder{
-                color:#0000ff!important;
-                padding:0px 5px;
-                text-transform: uppercase;
-            
+        #enviar{
+            color:#0000ff;
+            padding:2px 8px;
+            font-size: 1rem;
+            font-weight:600;
+            text-transform: uppercase;
+            background: white;
+            border: solid 2px #0000ff;
+        }
+        #enviar:hover{
+            color:white;
+            background:#0000ff;
+            border: solid 2px white;
         }
     }
     
